@@ -1,6 +1,5 @@
 package com.dentrix.util;
 
-import java.lang.System.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,10 +10,10 @@ public class ConexionDB {
     
     private static final Logger logger = LoggerFactory.getLogger(ConexionDB.class);
     
-    // Aquí va el nombre de tu BD, el usuario por defecto y la contraseña que pusiste al instalar PostgreSQL
     private static final String URL = "jdbc:postgresql://localhost:5432/dentrix_db";
     private static final String USER = "postgres"; 
-    private static final String PASSWORD = "162001"; // ¡CAMBIA ESTO POR TU CONTRASEÑA DE POSTGRES!
+    // Aquí pusiste "16200...", asegúrate de que sea tu contraseña real de PostgreSQL
+    private static final String PASSWORD = "162001"; 
 
     public static Connection getConnection() {
         try {
