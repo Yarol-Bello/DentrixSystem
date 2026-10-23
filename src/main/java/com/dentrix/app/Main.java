@@ -1,17 +1,18 @@
 package com.dentrix.app;
 
-import com.dentrix.util.ConexionDB;
-import java.sql.Connection;
+import com.dentrix.view.LoginView;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        LoginView loginView = new LoginView();
+        loginView.mostrar(primaryStage);
+    }
+
     public static void main(String[] args) {
-        // Intentamos conectar
-        Connection conn = ConexionDB.getConnection();
-        
-        if (conn != null) {
-            System.out.println("✅ ¡EXCELENTE! Java se conectó correctamente a PostgreSQL.");
-        } else {
-            System.out.println("❌ ERROR: No se pudo conectar. Revisa tu contraseña o si PostgreSQL está encendido.");
-        }
+        launch(args);
     }
 }
