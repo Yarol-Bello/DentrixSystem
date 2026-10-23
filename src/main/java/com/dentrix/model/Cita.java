@@ -6,11 +6,12 @@ import java.sql.Time;
 public class Cita {
     private int id;
     private int pacienteId;
-    private String pacienteNombre; // Para mostrar en la tabla sin hacer JOIN extra
     private int odontologoId;
-    private String odontologoNombre;
     private int procedimientoId;
+    private String pacienteNombre;
+    private String odontologoNombre;
     private String procedimientoNombre;
+    private String dniPaciente;
     private String consultorio;
     private Date fecha;
     private Time horaInicio;
@@ -23,16 +24,18 @@ public class Cita {
     public void setId(int id) { this.id = id; }
     public int getPacienteId() { return pacienteId; }
     public void setPacienteId(int pacienteId) { this.pacienteId = pacienteId; }
-    public String getPacienteNombre() { return pacienteNombre; }
-    public void setPacienteNombre(String pacienteNombre) { this.pacienteNombre = pacienteNombre; }
     public int getOdontologoId() { return odontologoId; }
     public void setOdontologoId(int odontologoId) { this.odontologoId = odontologoId; }
-    public String getOdontologoNombre() { return odontologoNombre; }
-    public void setOdontologoNombre(String odontologoNombre) { this.odontologoNombre = odontologoNombre; }
     public int getProcedimientoId() { return procedimientoId; }
     public void setProcedimientoId(int procedimientoId) { this.procedimientoId = procedimientoId; }
+    public String getPacienteNombre() { return pacienteNombre; }
+    public void setPacienteNombre(String pacienteNombre) { this.pacienteNombre = pacienteNombre; }
+    public String getOdontologoNombre() { return odontologoNombre; }
+    public void setOdontologoNombre(String odontologoNombre) { this.odontologoNombre = odontologoNombre; }
     public String getProcedimientoNombre() { return procedimientoNombre; }
     public void setProcedimientoNombre(String procedimientoNombre) { this.procedimientoNombre = procedimientoNombre; }
+    public String getDniPaciente() { return dniPaciente; }
+    public void setDniPaciente(String dniPaciente) { this.dniPaciente = dniPaciente; }
     public String getConsultorio() { return consultorio; }
     public void setConsultorio(String consultorio) { this.consultorio = consultorio; }
     public Date getFecha() { return fecha; }

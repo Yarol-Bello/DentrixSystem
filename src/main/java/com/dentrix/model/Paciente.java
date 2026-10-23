@@ -15,9 +15,7 @@ public class Paciente {
     private String direccion;
     private String alergias;
 
-    // Constructor vacío, getters y setters
-    public Paciente() {}
-
+    // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getCodigoHc() { return codigoHc; }

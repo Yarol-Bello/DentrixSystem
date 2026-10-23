@@ -162,3 +162,17 @@
     -fx-cursor: hand;
 }
 .btn-danger:hover { -fx-background-color: #FEE2E2; }
+
+/* Añadir al final de dashboard.css */
+.combo-box {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 5;
+    -fx-font-size: 12px;
+}
+.combo-box:focused {
+    -fx-background-color: white;
+    -fx-border-color: #00A896;
+}

@@ -1,28 +1,31 @@
 package com.dentrix.util;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Properties;
 
 public class ConexionDB {
-    
-    private static final Logger logger = LoggerFactory.getLogger(ConexionDB.class);
-    
-    private static final String URL = "jdbc:postgresql://localhost:5432/dentrix_db";
-    private static final String USER = "postgres"; 
-    // Aquí pusiste "16200...", asegúrate de que sea tu contraseña real de PostgreSQL
-    private static final String PASSWORD = "162001"; 
+    private static String URL;
+    private static String USER;
+    private static String PASS;
 
-    public static Connection getConnection() {
-        try {
-            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            logger.info("Conexión exitosa a la base de datos PostgreSQL.");
-            return connection;
-        } catch (SQLException e) {
-            logger.error("Error al conectar a la base de datos: {}", e.getMessage());
-            return null;
+    static {
+        try (InputStream input = ConexionDB.class.getClassLoader().getResourceAsStream("application.properties")) {
+            Properties prop = new Properties();
+            if (input != null) {
+                prop.load(input);
+                URL = prop.getProperty("db.url");
+                USER = prop.getProperty("db.user");
+                PASS = prop.getProperty("db.password");
+            }
+        } catch (Exception e) {
+            System.err.println("Error cargando configuración de BD: " + e.getMessage());
         }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASS);
     }
 }
