@@ -68,6 +68,9 @@ public class DashboardView {
             root.setCenter(new PacientesView());
         });
         Button btnAgenda = crearBotonMenu("Agenda Citas", false);
+        btnAgenda.setOnAction(e -> {
+            root.setCenter(new AgendaView());
+        });
         Button btnFicha = crearBotonMenu("Ficha Clínica", false);
         Button btnCaja = crearBotonMenu("Caja / Cobros", false);
         Button btnReportes = crearBotonMenu("Reportes", false);
