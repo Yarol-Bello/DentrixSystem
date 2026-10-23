@@ -14,7 +14,7 @@ public class LoginView {
     public void mostrar(Stage stage) {
         // 1. Contenedor principal (Fondo gris claro)
         StackPane root = new StackPane();
-        root.setStyle("-fx-background-color: #F1F5F9;"); 
+        root.setStyle("-fx-background-color: #F1F5F9;");
 
         // 2. Tarjeta blanca de Login
         VBox loginCard = new VBox(15);
@@ -26,10 +26,10 @@ public class LoginView {
         // Títulos
         Label lblTitulo = new Label("Dentrix");
         lblTitulo.getStyleClass().add("title-text");
-        
+
         Label lblSubtitulo = new Label("Centro Odontológico");
         lblSubtitulo.getStyleClass().add("subtitle-text");
-        
+
         VBox headerBox = new VBox(5, lblTitulo, lblSubtitulo);
         headerBox.setAlignment(Pos.CENTER);
 
@@ -76,12 +76,14 @@ public class LoginView {
             Usuario usuario = dao.validarLogin(user, pass);
 
             if (usuario != null) {
-                // Éxito
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Acceso Correcto");
-                alert.setHeaderText(null);
-                alert.setContentText("Bienvenido " + usuario.getNombres() + "\nRol: " + usuario.getRol());
-                alert.showAndWait();
+                // Éxito: Abrir el Dashboard y cerrar la ventana de Login
+                DashboardView dashboard = new DashboardView();
+                Stage dashboardStage = new Stage();
+                dashboard.mostrar(dashboardStage, usuario);
+
+                // Cerrar la ventana actual de login
+                Stage loginStage = (Stage) btnLogin.getScene().getWindow();
+                loginStage.close();
             } else {
                 lblError.setText("Usuario o contraseña incorrectos.");
                 lblError.setVisible(true);
@@ -105,10 +107,10 @@ public class LoginView {
         stage.setTitle("Dentrix Dental - Iniciar Sesión");
         stage.setScene(scene);
         stage.setResizable(false);
-        
+
         // Centrar la ventana en la pantalla al abrir
-        stage.centerOnScreen(); 
-        
+        stage.centerOnScreen();
+
         stage.show();
     }
 }
