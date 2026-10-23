@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
+import com.dentrix.model.Consultorio;
+import java.util.List;
 
-/**
- *
- * @author yarol
- */
-public class ConsultorioDAO {
-    
+public interface ConsultorioDAO {
+    List<Consultorio> listarTodos();
+    boolean guardar(Consultorio c);
+    boolean actualizarEstado(int id, String nuevoEstado);
 }

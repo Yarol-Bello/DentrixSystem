@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
+import com.dentrix.model.TurnoCaja;
 
-/**
- *
- * @author yarol
- */
-public class TurnoCajaDAO {
-    
+public interface TurnoCajaDAO {
+    TurnoCaja obtenerTurnoAbierto();
+    boolean abrirTurno(TurnoCaja turno);
+    boolean cerrarTurno(int turnoId, int cajeroCierreId);
 }

@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
+import com.dentrix.model.CierreCaja;
 
-/**
- *
- * @author yarol
- */
-public class CierreCajaDAO {
-    
+public interface CierreCajaDAO {
+    boolean guardar(CierreCaja cierre);
+    CierreCaja buscarPorTurno(int turnoId);
 }

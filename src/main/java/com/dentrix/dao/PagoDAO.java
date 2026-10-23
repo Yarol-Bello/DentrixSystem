@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
 
-/**
- *
- * @author yarol
- */
-public class PagoDAO {
-    
+import com.dentrix.model.Pago;
+import java.util.List;
+
+public interface PagoDAO {
+    boolean registrarPago(Pago pago, int fichaId, double nuevoSaldo, String nuevoEstado);
+    List<Pago> listarPagosPorPaciente(int pacienteId);
+    List<Pago> listarPagosPorTurno(int turnoId);
 }

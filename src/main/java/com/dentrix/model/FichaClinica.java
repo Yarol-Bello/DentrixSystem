@@ -6,7 +6,7 @@ import java.util.List;
 public class FichaClinica {
     private int id;
     private int pacienteId;
-    private int citaId;
+    private Integer citaId; // <-- CAMBIADO A Integer PARA ACEPTAR NULL
     private int odontologoId;
     private Date fecha;
     private String anamnesis;
@@ -20,13 +20,15 @@ public class FichaClinica {
     private String pacienteNombre;
     private List<FichaDetalle> detalles;
 
-    // Getters y Setters
+    // Getters y Setters actualizados
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getPacienteId() { return pacienteId; }
     public void setPacienteId(int pacienteId) { this.pacienteId = pacienteId; }
-    public int getCitaId() { return citaId; }
-    public void setCitaId(int citaId) { this.citaId = citaId; }
+    
+    public Integer getCitaId() { return citaId; }
+    public void setCitaId(Integer citaId) { this.citaId = citaId; }
+    
     public int getOdontologoId() { return odontologoId; }
     public void setOdontologoId(int odontologoId) { this.odontologoId = odontologoId; }
     public Date getFecha() { return fecha; }

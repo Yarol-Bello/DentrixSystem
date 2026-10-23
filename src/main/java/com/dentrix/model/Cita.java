@@ -16,10 +16,10 @@ public class Cita {
     private Date fecha;
     private Time horaInicio;
     private Time horaFin;
+    private String turno;
     private String estado;
     private String observaciones;
 
-    // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getPacienteId() { return pacienteId; }
@@ -44,6 +44,8 @@ public class Cita {
     public void setHoraInicio(Time horaInicio) { this.horaInicio = horaInicio; }
     public Time getHoraFin() { return horaFin; }
     public void setHoraFin(Time horaFin) { this.horaFin = horaFin; }
+    public String getTurno() { return turno; }
+    public void setTurno(String turno) { this.turno = turno; }
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
     public String getObservaciones() { return observaciones; }

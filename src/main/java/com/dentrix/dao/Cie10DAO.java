@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
 
-/**
- *
- * @author yarol
- */
-public class Cie10DAO {
-    
+import com.dentrix.model.Cie10;
+import java.util.List;
+
+public interface Cie10DAO {
+    List<Cie10> listarTodos();
+    Cie10 buscarPorCodigo(String codigo);
+    boolean guardar(Cie10 c);
+    boolean actualizar(Cie10 c);
+    boolean eliminar(int id);
 }

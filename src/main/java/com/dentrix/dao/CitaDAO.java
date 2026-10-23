@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
 
-/**
- *
- * @author yarol
- */
-public class CitaDAO {
-    
+import com.dentrix.model.Cita;
+import com.dentrix.model.Usuario;
+import java.sql.Date;
+import java.util.List;
+
+public interface CitaDAO {
+    List<Cita> listarPorFecha(Date fecha);
+    boolean guardar(Cita c);
+    boolean actualizar(Cita c);
+    boolean actualizarEstadoCita(int citaId, String nuevoEstado);
+    List<Usuario> listarOdontologos();
 }

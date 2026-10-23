@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dentrix.dao;
 
-/**
- *
- * @author yarol
- */
-public class FichaClinicaDAO {
-    
+import com.dentrix.model.FichaClinica;
+import com.dentrix.model.FichaDetalle;
+import java.util.List;
+
+public interface FichaClinicaDAO {
+    boolean guardarFicha(FichaClinica ficha);
+    FichaClinica buscarFichaPendientePorPaciente(int pacienteId);
+    List<FichaDetalle> obtenerDetallesFicha(int fichaId);
+    List<FichaClinica> listarFichasPorPaciente(int pacienteId); // <-- NUEVO
 }
