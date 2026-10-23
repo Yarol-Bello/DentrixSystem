@@ -1,0 +1,79 @@
+/* login.css */
+
+/* Fondo general de la ventana */
+.root {
+    -fx-background-color: #F1F5F9; 
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+}
+
+/* Tarjeta blanca central */
+.login-card {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(three-pass-box, rgba(15, 23, 42, 0.1), 20, 0, 0, 10); /* Sombra suave y profesional */
+}
+
+/* Textos principales */
+.title-text {
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.subtitle-text {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+}
+
+.label-bold {
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* Campos de entrada (Usuario y Contraseña) */
+.text-field, .password-field {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 13px;
+    -fx-text-fill: #0F172A;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #00A896; /* Verde Dentrix */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 150, 0.2), 5, 0, 0, 0); /* Brillo sutil al enfocar */
+}
+
+/* Botón principal */
+.btn-primary {
+    -fx-background-color: #00A896;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #0F766E;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #0D9488;
+}
+
+/* Texto de error */
+.error-text {
+    -fx-text-fill: #DC2626;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}

@@ -2,48 +2,73 @@ package com.dentrix.view;
 
 import com.dentrix.dao.UsuarioDAO;
 import com.dentrix.model.Usuario;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.layout.*;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class LoginView {
 
     public void mostrar(Stage stage) {
-        // 1. Crear los componentes visuales
-        Label lblTitulo = new Label("Dentrix Dental");
-        lblTitulo.setFont(Font.font("System", FontWeight.BOLD, 24));
-        lblTitulo.setStyle("-fx-text-fill: #0F766E;"); // Color verde oscuro del prototipo
+        // 1. Contenedor principal (Fondo gris claro)
+        StackPane root = new StackPane();
+        root.setStyle("-fx-background-color: #F1F5F9;"); 
 
+        // 2. Tarjeta blanca de Login
+        VBox loginCard = new VBox(15);
+        loginCard.getStyleClass().add("login-card");
+        loginCard.setAlignment(Pos.CENTER);
+        loginCard.setMaxWidth(400);
+        loginCard.setMaxHeight(450);
+
+        // Títulos
+        Label lblTitulo = new Label("Dentrix");
+        lblTitulo.getStyleClass().add("title-text");
+        
         Label lblSubtitulo = new Label("Centro Odontológico");
-        lblSubtitulo.setStyle("-fx-text-fill: #64748B; -fx-font-size: 12px;");
+        lblSubtitulo.getStyleClass().add("subtitle-text");
+        
+        VBox headerBox = new VBox(5, lblTitulo, lblSubtitulo);
+        headerBox.setAlignment(Pos.CENTER);
 
+        // Campos del formulario
+        VBox formBox = new VBox(10);
+        formBox.setMaxWidth(300);
+        formBox.setAlignment(Pos.CENTER_LEFT);
+
+        Label lblUser = new Label("USUARIO");
+        lblUser.getStyleClass().add("label-bold");
         TextField txtUsuario = new TextField();
-        txtUsuario.setPromptText("Usuario");
-        txtUsuario.setMaxWidth(250);
+        txtUsuario.setPromptText("Nombre de usuario");
 
+        Label lblPass = new Label("CONTRASEÑA");
+        lblPass.getStyleClass().add("label-bold");
         PasswordField txtPassword = new PasswordField();
         txtPassword.setPromptText("Contraseña");
-        txtPassword.setMaxWidth(250);
 
-        Button btnLogin = new Button("Iniciar Sesión");
-        btnLogin.setStyle("-fx-background-color: #00A896; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
-        btnLogin.setMaxWidth(250);
+        formBox.getChildren().addAll(lblUser, txtUsuario, lblPass, txtPassword);
 
+        // Mensaje de error (oculto por defecto)
         Label lblError = new Label();
-        lblError.setStyle("-fx-text-fill: red; -fx-font-size: 11px;");
+        lblError.getStyleClass().add("error-text");
+        lblError.setVisible(false);
 
-        // 2. Acción del botón
+        // Botón de Ingreso
+        Button btnLogin = new Button("Iniciar Sesión");
+        btnLogin.getStyleClass().add("btn-primary");
+        btnLogin.setMaxWidth(Double.MAX_VALUE);
+        btnLogin.setMaxWidth(300);
+
+        // Lógica del botón
         btnLogin.setOnAction(e -> {
-            String user = txtUsuario.getText();
-            String pass = txtPassword.getText();
+            String user = txtUsuario.getText().trim();
+            String pass = txtPassword.getText().trim();
 
             if (user.isEmpty() || pass.isEmpty()) {
-                lblError.setText("Por favor, llene todos los campos.");
+                lblError.setText("Por favor, ingrese sus credenciales.");
+                lblError.setVisible(true);
                 return;
             }
 
@@ -51,29 +76,39 @@ public class LoginView {
             Usuario usuario = dao.validarLogin(user, pass);
 
             if (usuario != null) {
+                // Éxito
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Bienvenido");
+                alert.setTitle("Acceso Correcto");
                 alert.setHeaderText(null);
-                alert.setContentText("¡Bienvenido " + usuario.getNombres() + "!\nRol: " + usuario.getRol());
+                alert.setContentText("Bienvenido " + usuario.getNombres() + "\nRol: " + usuario.getRol());
                 alert.showAndWait();
-                // Aquí luego abriremos el Módulo 2 (Dashboard)
             } else {
                 lblError.setText("Usuario o contraseña incorrectos.");
+                lblError.setVisible(true);
             }
         });
 
-        // 3. Organizar en un contenedor vertical
-        VBox root = new VBox(15);
-        root.setAlignment(Pos.CENTER);
-        root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #F8FAFC;"); // Color de fondo claro
-        root.getChildren().addAll(lblTitulo, lblSubtitulo, txtUsuario, txtPassword, btnLogin, lblError);
+        // Texto de ayuda inferior
+        Label lblAyuda = new Label("El sistema redirige automáticamente según tu rol.");
+        lblAyuda.getStyleClass().add("subtitle-text");
+        lblAyuda.setTextAlignment(TextAlignment.CENTER);
 
-        // 4. Crear la escena y mostrarla
-        Scene scene = new Scene(root, 400, 500);
-        stage.setTitle("Dentrix - Login");
+        // Ensamblar la tarjeta
+        loginCard.getChildren().addAll(headerBox, formBox, lblError, btnLogin, lblAyuda);
+        root.getChildren().add(loginCard);
+
+        // 3. Configurar la escena
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/styles/login.css").toExternalForm());
+
+        // Título nativo de la ventana
+        stage.setTitle("Dentrix Dental - Iniciar Sesión");
         stage.setScene(scene);
         stage.setResizable(false);
+        
+        // Centrar la ventana en la pantalla al abrir
+        stage.centerOnScreen(); 
+        
         stage.show();
     }
 }
