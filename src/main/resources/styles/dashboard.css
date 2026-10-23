@@ -80,3 +80,85 @@
     -fx-text-fill: #0F172A;
     -fx-font-family: "Consolas", monospace;
 }
+
+/* Formularios */
+.form-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+.form-input {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 12px;
+}
+
+.form-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #00A896;
+}
+
+/* Tablas */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.table-row-cell {
+    -fx-font-size: 12px;
+    -fx-cell-size: 35px;
+}
+
+/* Botones */
+.btn-primary {
+    -fx-background-color: #00A896;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 10;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.btn-primary:hover { -fx-background-color: #0F766E; }
+
+.btn-secondary {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-padding: 6 10;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #E2E8F0; }
+
+.btn-danger {
+    -fx-background-color: #FEF2F2;
+    -fx-text-fill: #DC2626;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-padding: 6 10;
+    -fx-border-color: #FCA5A5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-danger:hover { -fx-background-color: #FEE2E2; }

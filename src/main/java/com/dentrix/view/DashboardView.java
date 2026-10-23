@@ -19,7 +19,7 @@ public class DashboardView {
         this.usuarioLogueado = usuario;
 
         root = new BorderPane();
-        
+
         // 1. Crear el Sidebar (Menú Lateral)
         sidebar = crearSidebar();
         root.setLeft(sidebar);
@@ -50,15 +50,23 @@ public class DashboardView {
         lblTitulo.getStyleClass().add("sidebar-title");
         Label lblSubtitulo = new Label("Centro Odontológico");
         lblSubtitulo.getStyleClass().add("sidebar-subtitle");
-        
+
         VBox logoBox = new VBox(2, lblTitulo, lblSubtitulo);
         logoBox.setPadding(new Insets(0, 0, 20, 0));
         logoBox.setStyle("-fx-border-color: transparent transparent #E2E8F0 transparent; -fx-border-width: 0 0 1 0;");
 
         // Botones del menú
         Button btnInicio = crearBotonMenu("Inicio", true);
+        btnInicio.setOnAction(e -> {
+            // Volver al panel de inicio
+            root.setCenter(crearPanelInicio());
+        });
         Button btnRecepcion = crearBotonMenu("Recepción / Asistencia", false);
         Button btnPacientes = crearBotonMenu("Pacientes", false);
+        btnPacientes.setOnAction(e -> {
+            // Cambiar el panel central al módulo de pacientes
+            root.setCenter(new PacientesView());
+        });
         Button btnAgenda = crearBotonMenu("Agenda Citas", false);
         Button btnFicha = crearBotonMenu("Ficha Clínica", false);
         Button btnCaja = crearBotonMenu("Caja / Cobros", false);
@@ -90,8 +98,8 @@ public class DashboardView {
         userBox.setStyle("-fx-border-color: #E2E8F0 transparent transparent transparent; -fx-border-width: 1 0 0 0;");
 
         sidebar.getChildren().addAll(
-                logoBox, 
-                btnInicio, btnRecepcion, btnPacientes, btnAgenda, 
+                logoBox,
+                btnInicio, btnRecepcion, btnPacientes, btnAgenda,
                 btnFicha, btnCaja, btnReportes, btnConfig,
                 spacer, userBox
         );
@@ -119,7 +127,7 @@ public class DashboardView {
 
         // Grid de KPIs (Tarjetas de resumen)
         HBox kpiContainer = new HBox(15);
-        
+
         // Tarjeta 1
         VBox card1 = crearTarjetaKPI("Citados Hoy", "0"); // Luego lo conectamos a BD
         VBox card2 = crearTarjetaKPI("Atendidos", "0");
@@ -136,7 +144,7 @@ public class DashboardView {
         // Aquí luego irá la tabla de pacientes del día
         Label lblProximamente = new Label("Bienvenido al sistema. Seleccione un módulo del menú lateral.");
         lblProximamente.setStyle("-fx-text-fill: #64748B; -fx-font-size: 14px;");
-        
+
         VBox contentBox = new VBox(lblProximamente);
         contentBox.setAlignment(Pos.CENTER);
         VBox.setVgrow(contentBox, Priority.ALWAYS);
@@ -148,13 +156,13 @@ public class DashboardView {
     private VBox crearTarjetaKPI(String titulo, String valor) {
         VBox card = new VBox(5);
         card.getStyleClass().add("kpi-card");
-        
+
         Label lblTitulo = new Label(titulo);
         lblTitulo.getStyleClass().add("kpi-title");
-        
+
         Label lblValor = new Label(valor);
         lblValor.getStyleClass().add("kpi-value");
-        
+
         card.getChildren().addAll(lblTitulo, lblValor);
         return card;
     }
